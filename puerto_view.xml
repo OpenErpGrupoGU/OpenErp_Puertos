@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<!-- Menú principal de managing -->
+		<menuitem id="autoscout_menu" name="autoscout" />
+
+		<!-- Vista Tree -->
+		<record model="ir.ui.view" id="automoviles_tree_view">
+			<field name="name">automoviles.as.tree</field>
+			<field name="model">automoviles.as</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Automoviles a la venta">
+					<field name="marca" />
+					<field name="modelo" />
+					<field name="matricula" />
+					<field name="pvp" />
+					<field name="caballos" />
+					<field name="km" />
+					<field name="tv" />
+					<field name="vendedor" />
+					<field name="imagen" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Vista Form -->
+		<record model="ir.ui.view" id="automoviles_form_view">
+			<field name="name">automoviles.as.form</field>
+			<field name="model">automoviles.as</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Un automovil a la venta">
+					<field name="marca" />
+					<field name="modelo" />
+					<field name="matricula" />
+					<field name="pvp" />
+					<field name="caballos" />
+					<field name="km" />
+					<field name="tv" />
+					<field name="vendedor" />
+					<field name="imagen" colspan="4"/>
+				</form>
+			</field>
+		</record>
+
+		<!-- Diseño de un action - ctrl + space: view_action-->
+		<record model="ir.actions.act_window" id="action_automoviles_tree_view">
+			<field name="name">automoviles.as</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">automoviles.as</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="automoviles_tree_view" />
+		</record>
+
+		<!-- Diseño de los submenus -->
+		<menuitem id="automoviles_submenu_menu" name="Automoviles" parent="autoscout_menu" action="action_automoviles_tree_view"/>
+
+	</data>
+</openerp>
