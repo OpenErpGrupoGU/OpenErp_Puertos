@@ -28,7 +28,7 @@ class personas_pr(osv.osv):
     _rec_name='dni'
     _columns = {
             'nombre':fields.char('Nombre', size = 50, required = True, readonly = False),
-            'dni':fields.char('DNI Vendedor', size = 10, required = True, readonly = False),
+            'dni':fields.char('DNI', size = 10, required = True, readonly = False),
             'direccion':fields.char('Dirección', size = 50, required = True, readonly = False),
             'salida_tripulacion':fields.many2many('salidas.pr', 'sal_per_tripulacion', 'dni_persona', 'codigo_salida', 'Tripula en'),
             'salida_personas_embarcar':fields.many2many('salidas.pr', 'sal_per_embarcar', 'dni_persona', 'codigo_salida', 'Pasajero en'),
@@ -69,9 +69,10 @@ class salidas_pr(osv.osv):
     _rec_name='codigo'
     _columns = {
             'codigo':fields.char('Código', size = 10, required = True, readonly = False),
-            'matricula': fields.many2one('barcos.pr','Matrícula', required = True, readonly = False),
+            'barco': fields.many2one('barcos.pr','Barco', required = True, readonly = False),
             'fecha': fields.date('Fecha', required = True, readonly = False),
-            'hora': fields.time('Hora', required = True, readonly = False),
+            'hora': fields.float('Hora', required = True, readonly = False),
+            #'hora': fields.time('Hora', required = True, readonly = False),
             'destino':fields.char('Destino', size = 30, required = True, readonly = False),
             'patron': fields.many2one('personas.pr','Patrón', required = True, readonly = False),
             'tripulacion':fields.many2many('personas.pr', 'sal_per_tripulacion', 'codigo_salida', 'dni_persona', 'Tripulación'),

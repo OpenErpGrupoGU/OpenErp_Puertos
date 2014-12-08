@@ -14,8 +14,8 @@
 				<tree string="Personas">
 					<field name="dni" />
 					<field name="nombre" />
-					<field name="dirección" />
-					<field name="salida_triuplacion" />
+					<field name="direccion" />
+					<field name="salida_tripulacion" />
 					<field name="salida_personas_embarcar" />
 				</tree>
 			</field>
@@ -31,7 +31,7 @@
 					<field name="dni" colspan="4" />
 					<field name="nombre" colspan="4" />
 					<field name="direccion" colspan="4" />
-					<field name="salida_triuplacion" colspan="4" />
+					<field name="salida_tripulacion" colspan="4" />
 					<field name="salida_personas_embarcar" colspan="4" />
 				</form>
 			</field>
@@ -115,7 +115,7 @@
 					<field name="codigo" />
 					<field name="barco" />
 					<field name="fecha" />
-					<field name="hora" />
+					<field name="hora" widget="float_time"/>
 					<field name="destino" />
 					<field name="patron" />
 					<field name="tripulacion" />
@@ -134,11 +134,11 @@
 					<field name="codigo" />
 					<field name="barco" />
 					<field name="fecha" />
-					<field name="hora" />
+					<field name="hora" widget="float_time"/>
 					<field name="destino" />
 					<field name="patron" />
-					<field name="tripulacion" />
-					<field name="personas_embarcar" />
+					<field name="tripulacion" colspan="4"/>
+					<field name="personas_embarcar" colspan="4" />
 				</form>
 			</field>
 		</record>
