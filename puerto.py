@@ -21,17 +21,60 @@
 #
 ##############################################################################
 from osv import fields, osv
-class vendedores_as(osv.osv):
+class personas_pr(osv.osv):
 
-    _name = 'vendedores.as'
-    _description = 'vendedores.as'
+    _name = 'personas.pr'
+    _description = 'personas.pr'
     _rec_name='dni'
     _columns = {
-            'nombre':fields.char('Nombre', size = 30, required = True, readonly = False),
-            'apellidos':fields.char('Apellidos', size = 30, required = True, readonly = False),
+            'nombre':fields.char('Nombre', size = 50, required = True, readonly = False),
             'dni':fields.char('DNI Vendedor', size = 10, required = True, readonly = False),
-            'telefono':fields.char('Telefono', size = 15, required = True, readonly = False),
-            'imagen':fields.binary('Imagen', filters=None), 
-            'automovil':fields.one2many('automoviles.as', 'vendedor', 'Automovil', required=False),
+            'direccion':fields.char('Dirección', size = 50, required = True, readonly = False),
+            'salida_tripulacion':fields.many2many('salidas.pr', 'sal_per_tripulacion', 'dni_persona', 'codigo_salida', 'Tripula en'),
+            'salida_personas_embarcar':fields.many2many('salidas.pr', 'sal_per_embarcar', 'dni_persona', 'codigo_salida', 'Pasajero en'),
         }
-vendedores_as()
+personas_pr()
+
+class barcos_pr(osv.osv):
+
+    _name = 'barcos.pr'
+    _description = 'barcos.pr'
+    _rec_name='matricula'
+    _columns = {
+            'matricula':fields.char('Matricula', size = 50, required = True, readonly = False),
+            'nombre':fields.char('Nombre', size = 30, required = True, readonly = False),
+            'tipo':fields.selection([
+                ('pesca','Barco de pesca'),
+                ('mercante','Barco mercante'),
+                ('crucero','Crucero'),
+                ('velero','Velero'),
+                 ],'Tipo de barco', select = False, readonly = False),
+            'propietario': fields.many2one('personas.pr','Propietario', required = True, readonly = False),
+            'muelle':fields.char('Muelle', size = 5, required = True, readonly = False),
+            'darsena':fields.char('Dársena', size = 5, required = True, readonly = False),
+            'cuota':fields.float('Cuota', digits = (6,2), required = True, readonly = False),
+            'periodicidad':fields.selection([
+                ('mensual','Mensual'),
+                ('trimestral','Trimestral'),
+                ('anual','Anual'),
+                 ],'Periocidad de cuota', select = False, readonly = False),
+        }
+barcos_pr()
+
+
+class salidas_pr(osv.osv):
+
+    _name = 'salidas.pr'
+    _description = 'salidas.pr'
+    _rec_name='codigo'
+    _columns = {
+            'codigo':fields.char('Código', size = 10, required = True, readonly = False),
+            'matricula': fields.many2one('barcos.pr','Matrícula', required = True, readonly = False),
+            'fecha': fields.date('Fecha', required = True, readonly = False),
+            'hora': fields.time('Hora', required = True, readonly = False),
+            'destino':fields.char('Destino', size = 30, required = True, readonly = False),
+            'patron': fields.many2one('personas.pr','Patrón', required = True, readonly = False),
+            'tripulacion':fields.many2many('personas.pr', 'sal_per_tripulacion', 'codigo_salida', 'dni_persona', 'Tripulación'),
+            'personas_embarcar':fields.many2many('personas.pr', 'sal_per_embarcar', 'codigo_salida', 'dni_persona', 'Pasajeros'),
+        }
+salidas_pr()
