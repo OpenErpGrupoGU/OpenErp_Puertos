@@ -48,7 +48,7 @@
 		</record>
 
 		<!-- Diseño de los submenus -->
-		<menuitem id="personas_submenu_menu" name="Personas" parent="personas_menu"
+		<menuitem id="personas_submenu_menu" name="Personas" parent="puerto_menu"
 			action="action_personas_tree_view" />
 
 		<!-- BARCOS -->
@@ -101,7 +101,7 @@
 		</record>
 
 		<!-- Diseño de los submenus -->
-		<menuitem id="barcos_submenu_menu" name="Barcos" parent="barcos_menu"
+		<menuitem id="barcos_submenu_menu" name="Barcos" parent="puerto_menu"
 			action="action_barcos_tree_view" />
 
 		<!-- SALIDAS -->
@@ -154,7 +154,7 @@
 		</record>
 
 		<!-- Diseño de los submenus -->
-		<menuitem id="salidas_submenu_menu" name="Salidas" parent="salidas_menu"
+		<menuitem id="salidas_submenu_menu" name="Salidas" parent="puerto_menu"
 			action="action_salidas_tree_view" />
 
 
