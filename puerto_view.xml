@@ -2,60 +2,157 @@
 <openerp>
 	<data>
 		<!-- Menú principal de managing -->
-		<menuitem id="autoscout_menu" name="autoscout" />
+		<menuitem id="puerto_menu" name="puerto" />
 
+		<!-- PERSONAS -->
 		<!-- Vista Tree -->
-		<record model="ir.ui.view" id="automoviles_tree_view">
-			<field name="name">automoviles.as.tree</field>
-			<field name="model">automoviles.as</field>
+		<record model="ir.ui.view" id="personas_tree_view">
+			<field name="name">personas.pr.tree</field>
+			<field name="model">personas.pr</field>
 			<field name="type">tree</field>
 			<field name="arch" type="xml">
-				<tree string="Automoviles a la venta">
-					<field name="marca" />
-					<field name="modelo" />
-					<field name="matricula" />
-					<field name="pvp" />
-					<field name="caballos" />
-					<field name="km" />
-					<field name="tv" />
-					<field name="vendedor" />
-					<field name="imagen" />
+				<tree string="Personas">
+					<field name="dni" />
+					<field name="nombre" />
+					<field name="dirección" />
 				</tree>
 			</field>
 		</record>
 
 		<!-- Vista Form -->
-		<record model="ir.ui.view" id="automoviles_form_view">
-			<field name="name">automoviles.as.form</field>
-			<field name="model">automoviles.as</field>
+		<record model="ir.ui.view" id="personas_form_view">
+			<field name="name">personas.pr.form</field>
+			<field name="model">personas.pr</field>
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-				<form string="Un automovil a la venta">
-					<field name="marca" />
-					<field name="modelo" />
-					<field name="matricula" />
-					<field name="pvp" />
-					<field name="caballos" />
-					<field name="km" />
-					<field name="tv" />
-					<field name="vendedor" />
-					<field name="imagen" colspan="4"/>
+				<form string="Persona">
+					<field name="dni" colspan="4" />
+					<field name="nombre" colspan="4" />
+					<field name="direccion" colspan="4" />
 				</form>
 			</field>
 		</record>
 
-		<!-- Diseño de un action - ctrl + space: view_action-->
-		<record model="ir.actions.act_window" id="action_automoviles_tree_view">
-			<field name="name">automoviles.as</field>
+		<!-- Diseño de un action - ctrl + space: view_action -->
+		<record model="ir.actions.act_window" id="action_personas_tree_view">
+			<field name="name">personas.pr</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">automoviles.as</field>
+			<field name="res_model">personas.pr</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="automoviles_tree_view" />
+			<field name="view_id" ref="personas_tree_view" />
 		</record>
 
 		<!-- Diseño de los submenus -->
-		<menuitem id="automoviles_submenu_menu" name="Automoviles" parent="autoscout_menu" action="action_automoviles_tree_view"/>
+		<menuitem id="personas_submenu_menu" name="Personas" parent="personas_menu"
+			action="action_personas_tree_view" />
+
+		<!-- BARCOS -->
+		<!-- Vista Tree -->
+		<record model="ir.ui.view" id="barcos_tree_view">
+			<field name="name">barcos.pr.tree</field>
+			<field name="model">barcos.pr</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Barcos">
+					<field name="matricula" />
+					<field name="nombre" />
+					<field name="tipo" />
+					<field name="propietario" />
+					<field name="muelle" />
+					<field name="darsena" />
+					<field name="cuota" />
+					<field name="periodicidad" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Vista Form -->
+		<record model="ir.ui.view" id="barcos_form_view">
+			<field name="name">barcos.pr.form</field>
+			<field name="model">barcos.pr</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Persona">
+					<field name="matricula" />
+					<field name="nombre" />
+					<field name="tipo" />
+					<field name="propietario" />
+					<field name="muelle" />
+					<field name="darsena" />
+					<field name="cuota" />
+					<field name="periodicidad" />
+				</form>
+			</field>
+		</record>
+
+		<!-- Diseño de un action - ctrl + space: view_action -->
+		<record model="ir.actions.act_window" id="action_barcos_tree_view">
+			<field name="name">barcos.pr</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">barcos.pr</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="barcos_tree_view" />
+		</record>
+
+		<!-- Diseño de los submenus -->
+		<menuitem id="barcos_submenu_menu" name="Barcos" parent="barcos_menu"
+			action="action_barcos_tree_view" />
+
+		<!-- SALIDAS -->
+		<!-- Vista Tree -->
+		<record model="ir.ui.view" id="salidas_tree_view">
+			<field name="name">salidas.pr.tree</field>
+			<field name="model">salidas.pr</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Salidas">
+					<field name="codigo" />
+					<field name="barco" />
+					<field name="fecha" />
+					<field name="hora" />
+					<field name="destino" />
+					<field name="patron" />
+					<field name="tripulacion" />
+					<field name="personas_embarcar" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Vista Form -->
+		<record model="ir.ui.view" id="salidas_form_view">
+			<field name="name">salidas.pr.form</field>
+			<field name="model">salidas.pr</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Salidas">
+					<field name="codigo" />
+					<field name="barco" />
+					<field name="fecha" />
+					<field name="hora" />
+					<field name="destino" />
+					<field name="patron" />
+					<field name="tripulacion" />
+					<field name="personas_embarcar" />
+				</form>
+			</field>
+		</record>
+
+		<!-- Diseño de un action - ctrl + space: view_action -->
+		<record model="ir.actions.act_window" id="action_salidas_tree_view">
+			<field name="name">salidas.pr</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">salidas.pr</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="salidas_tree_view" />
+		</record>
+
+		<!-- Diseño de los submenus -->
+		<menuitem id="salidas_submenu_menu" name="Salidas" parent="salidas_menu"
+			action="action_salidas_tree_view" />
+
 
 	</data>
 </openerp>
